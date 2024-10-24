@@ -24,7 +24,13 @@ const ColorGenerator: React.FC = () => {
   };
 
   const handleShadesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setShades(Number(e.target.value));
+    const value = Number(e.target.value);
+    if (value > 20) {
+      alert("You can only generate up to 20 shades.");
+      setShades(20);
+    } else {
+      setShades(value);
+    }
   };
 
   const copyToClipboard = (shade: string) => {
@@ -33,6 +39,13 @@ const ColorGenerator: React.FC = () => {
 
     // Clear the "Copied!" message after 2 seconds
     setTimeout(() => setCopiedShade(null), 2000);
+  };
+
+  const getGridColumnsClass = () => {
+    if (generatedShades.length <= 3) return "grid-cols-1";
+    if (generatedShades.length <= 6) return "grid-cols-2";
+    if (generatedShades.length <= 10) return "grid-cols-4";
+    return "grid-cols-5";
   };
 
   return (
@@ -82,7 +95,7 @@ const ColorGenerator: React.FC = () => {
         </div>
 
         {/* Displaying generated shades */}
-        <div className="grid grid-cols-3 gap-4">
+        <div className={`grid gap-4 ${getGridColumnsClass()}`}>
           {generatedShades.length > 0 &&
             generatedShades.map((shade, index) => (
               <div
