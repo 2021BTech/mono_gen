@@ -49,7 +49,7 @@ const ColorGenerator: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-accent">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-opacity-80">
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full">
         <h1 className="text-3xl font-bold mb-4 text-center text-primary">
           Monochromatic Color Generator
@@ -115,7 +115,7 @@ const ColorGenerator: React.FC = () => {
         </div>
       </div>
 
-      <footer className="mt-8 text-center text-black">
+      <footer className="mt-8 text-center text-white">
         <p>
           &copy; {new Date().getFullYear()} Made with{" "}
           <span className="text-red-500">&hearts;</span> by BTech
